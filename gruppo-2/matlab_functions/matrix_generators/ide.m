@@ -1,4 +1,4 @@
-function [I] = IDE(A)
+function [I] = ide(A)
 % Calcolo matrice identica 
 % Funzione per calcolare la matrice identica
 

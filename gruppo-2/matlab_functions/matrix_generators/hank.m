@@ -1,4 +1,4 @@
-function [H] = HANK(c,n,m)
+function [H] = hank(c,n,m)
 % Matrice di Hankel
 % Le matrici di Hankel sono matrici quadrate o rettangolari definite come segue:
 % H(i,j)=c(i+j-1) dove c è un vettore es: c = [1, 2, 3, 4, 5, 6];

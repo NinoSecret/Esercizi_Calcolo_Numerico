@@ -1,4 +1,4 @@
-function [W] = WILK(n)
+function [W] = wilki(n)
 % Matrice di Wilkinson 
 % La matrice di Wilkinson è una matrice quadrata simmetrica tridiagonale 
 % che può causare problemi di cancellazione catastrofica in alcuni algoritmi numerici.

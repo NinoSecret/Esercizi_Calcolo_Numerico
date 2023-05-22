@@ -15,7 +15,7 @@ if isvector(a)
                 x=x+abs(a(i)^2);
             end
             x=sqrt(x);
-        otherwise
+        case "inf"
             for i=1:n
                 if abs(a(i)) > x
                     x=abs(a(i));
@@ -45,7 +45,7 @@ else
             end
             x=sqrt(x);
         otherwise
-        % Il raggio spettrale (o norma infinito) di una matrice A 
+        % Il raggio spettrale di una matrice A 
         % è definito come il massimo valore assoluto tra le somme 
         % degli elementi di ogni riga della matrice. 
             for i=1:n

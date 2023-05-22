@@ -1,4 +1,4 @@
-function [V] = VAN(x)
+function [V] = vander(x)
 % Matrice di Vandermonde
 % Le matrici di Vandermonde sono matrici rettangolari definite come segue:
 % V(i,j) = x_i^(j-1)

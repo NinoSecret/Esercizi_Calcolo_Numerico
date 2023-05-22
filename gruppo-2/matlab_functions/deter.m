@@ -1,4 +1,4 @@
-function [det] = DET(A)
+function [det] = deter(A)
 % Funzione per il calcolo del determinante.
 % 
 % La funziona applica il metodo di Gauss e successivamente calcola il

@@ -1,4 +1,4 @@
-function [H] = HILB(n)
+function [H] = hilbert(n)
 % Matrice di Hilbert definita come H(i,j) = 1/(i+j-1)
 % La matrice di Hilbert ha diverse proprietà interessanti, tra cui:
 % E' una matrice simmetrica e positiva definita
