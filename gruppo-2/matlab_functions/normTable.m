@@ -1,27 +1,32 @@
-function [outputArg1,outputArg2] = normTable(inputArg1,inputArg2)
+function [normH, normW] = normTable(a, b)
 % Inizializza una matrice vuota per le norme
-norms = zeros(b, 4);
+normH = zeros(b, 4);
+normW = zeros(b, 4);
 
-% Loop attraverso i valori di n
+% Calcolo delle norme
 for n = a:b
     
-    % Crea una matrice di Hilbert di ordine n
-    H = hilb(n);
+    % Calcola le quattro norme della matrice
     
-    % Calcola le quattro norme
-    
+    A=hilb(n);
+    B=wilki(n);
+
     % 1. Norma 1
-    norms(n, 1) = max(sum(abs(H), 1));
-    
+    normH(n, 1) = norma(A,1);
+    normW(n, 1) = norma(B,1);
+
     % 2. Norma 2
-    norms(n, 2) = max(abs(eig(H)));
-    
+    normH(n, 2) = norma(A,2);
+    normW(n, 2) = norma(B,2);
+
     % 3. Norma infinito
-    norms(n, 3) = max(sum(abs(H), 2));
+    normH(n, 3) = norma(A,'inf');
+    normW(n, 3) = norma(B,'inf');
     
     % 4. Norma di Frobenius
-    norms(n, 4) = sqrt(trace(H'*H));
-    
+    normH(n, 4) = sqrt(trace(A'*A));
+    normW(n, 4) = sqrt(trace(B'*B));
 end
+
 end
 

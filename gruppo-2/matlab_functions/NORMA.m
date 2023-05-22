@@ -1,4 +1,4 @@
-function [x] = NORMA(a, p)
+function [x] = norma(a, p)
 % Funzione per il calcolo della norma
 
 n=length(a);
