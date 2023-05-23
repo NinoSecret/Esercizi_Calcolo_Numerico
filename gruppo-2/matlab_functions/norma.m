@@ -43,7 +43,7 @@
              end
         
          case 2
-             x=max(abs(eig(a)))
+             x=sqrt(max(abs(eig(a'*a))));
          
          case 'fro' 
          % Norma Frobenius
