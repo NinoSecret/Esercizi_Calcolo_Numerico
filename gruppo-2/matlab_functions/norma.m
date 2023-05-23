@@ -8,7 +8,7 @@
      switch p 
          case 1 
              for i=1:n 
-                 x=abs(x+a(i)); 
+                 x=x+abs(a(i)); 
              end 
          case 2 
              for i=1:n 
