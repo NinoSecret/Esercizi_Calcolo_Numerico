@@ -1,4 +1,13 @@
 function [] = g3e2(a, b)
+% Esercizio di Davide Ferrara, Vitaliy Lyaskovskiy, Antonio Segreto
+
+% Stampa la tabella dei valori delle 4 norme matriciali al variare dell'ordine e realizza il grafico dell'andamento
+% le matrici prese in esame sono di Hilbert e di Wilkinson
+
+% parametri in ingresso
+% estremi dell'intervallo degli ordini
+% a = ordine minimo
+% b = ordine massimo
 
 [normHilb, normWilk] = normTable(a, b);
 
