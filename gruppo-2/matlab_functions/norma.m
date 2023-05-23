@@ -16,16 +16,17 @@
              end 
              x=sqrt(x); 
          case 'inf' 
-             for i=1:n 
-                 if abs(a(i)) > x 
-                     x=abs(a(i)); 
+             for i=1:n
+                 w = abs(a(i));
+                 if w > x 
+                     x=w; 
                  end 
              end 
          otherwise
              for i=1:n
                  x=x+abs(a(i)^p);
              end
-             x=sqrt(x);
+             x=x^1/p;
      end 
  else 
      switch p 
