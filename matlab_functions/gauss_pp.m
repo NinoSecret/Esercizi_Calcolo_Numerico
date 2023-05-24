@@ -4,7 +4,7 @@ n=length(A);
 sol = ones(n,1);
 b = A*sol;
 flag = 1;
-
+detA = 1;
 for k = 1:n-1
     % Pivoting
     [piv, l] = max(abs(A(k:n,k)));
