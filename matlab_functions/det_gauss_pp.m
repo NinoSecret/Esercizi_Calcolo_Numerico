@@ -1,14 +1,14 @@
-function [U, deter]=det_gauss_pp(A)
+function [U, det]=det_gauss_pp(A)
 n = size(A,1);
 U = A;
-deter = 1;
+det = 1;
 
 for k = 1: n-1
     % Pivoting
     [piv, j] = max(abs(A(k:n,k))); 
     % Determinante uguale a zero
     if (piv == 0) 
-        deter = 0;
+        det = 0;
         return
     end
     % Scambio le righe e cambio il segno del determinante
@@ -16,7 +16,7 @@ for k = 1: n-1
         temp = A(j+k-1,:);
         A(j+k-1,:) = A(k,:);
         A(k,:) = temp;
-        deter = -deter;
+        det = -det;
     end
     
     % Gauss Elimination
@@ -33,4 +33,4 @@ end
 U=A;
 % Calcolo il detrminante
 det_U=prod(diag(U));
-deter=deter*det_U;
+det=det*det_U;
