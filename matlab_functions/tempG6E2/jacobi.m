@@ -11,13 +11,13 @@ function [x, iter, error] = jacobi(A, b, x0, max_iter, tol)
 
         % Calcolo della nuova soluzione
         for i = 1:n
-            sumAx = 0;
+            sum_term = 0;
             for j = 1:n
                 if i ~= j
-                    sumAx = sumAx + A(i, j) * x_old(j);
+                    sum_term = sum_term + A(i, j) * x_old(j);
                 end
             end
-            x(i) = (b(i) - sumAx) / A(i, i);
+            x(i) = (b(i) - sum_term) / A(i, i);
         end
 
         % Calcolo dell'errore come la norma 2 della differenza tra le soluzioni attuali e precedenti

@@ -11,17 +11,17 @@ function [x, iter, error] = gauss_seidel(A, b, x0, max_iter, tol)
 
         % Calcolo della nuova soluzione
         for i = 1:n
-            sumAx1 = 0;
+            sum_term_1 = 0;
             for j = 1:i-1
-                sumAx1 = sumAx1 + A(i, j) * x(j);
+                sum_term_1 = sum_term_1 + A(i, j) * x(j);
             end
 
-            sumAx2 = 0;
+            sum_term_2 = 0;
             for j = i+1:n
-                sumAx2 = sumAx2 + A(i, j) * x_old(j);
+                sum_term_2 = sum_term_2 + A(i, j) * x_old(j);
             end
 
-            x(i) = (b(i) - sumAx1 - sumAx2) / A(i, i);
+            x(i) = (b(i) - sum_term_1 - sum_term_2) / A(i, i);
         end
 
         % Calcolo dell'errore come la norma 2 della differenza tra le soluzioni attuali e precedenti
