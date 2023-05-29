@@ -1,7 +1,7 @@
 function g6e2(A, b, max_iter, tol)
 % Esercizio di Davide Ferrara, Vitaliy Lyaskovskiy, Antonio Segreto
 
-x0 = zeros(length(b), 1); % inizializzazione a zero del vettore di guess iniziale
+x0 = zeros(length(b), 1); % inizializzazione a zero del vettore x0
 
 % Metodo di Jacobi
 [x_jacobi, iter_jacobi, error_jacobi] = jacobi(A, b, x0, max_iter, tol);
