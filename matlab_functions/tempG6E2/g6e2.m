@@ -1,4 +1,5 @@
 function g6e2(A, b, max_iter, tol)
+% Esercizio di Davide Ferrara, Vitaliy Lyaskovskiy, Antonio Segreto
 
 x0 = zeros(length(b), 1); % inizializzazione a zero del vettore di guess iniziale
 
