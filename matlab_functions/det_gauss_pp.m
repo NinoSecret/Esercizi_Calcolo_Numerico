@@ -11,6 +11,7 @@ for k = 1: n-1
         det = 0;
         return
     end
+    A
     % Scambio le righe e cambio il segno del determinante
     if (j ~= 1) 
         temp = A(j+k-1,:);
@@ -18,10 +19,11 @@ for k = 1: n-1
         A(k,:) = temp;
         det = -det;
     end
-    
+    A
     % Gauss Elimination
     for i = k+1 : n
         quot = A(i,k) / A(k,k);
+        quot
         A(i,k) = 0;
         for j = k+1 : n
             A(i,j) = A(i,j)- quot *A(k,j);
