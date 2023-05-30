@@ -3,11 +3,12 @@ A = [0.96326, 0.81321; 0.81321, 0.68654];
 b = [0.88824; 0.74988];
 
 % Verifica se A è definita positiva
-if issymmetric(A) && all(eig(A) > 0)
+isPositive = issymmetric(A) && all(eig(A) > 0);
+if isPositive
     % Metodo di Cholesky
     x_cholesky = cholesky(A,b);
     % Calcolo della norma del residuo per Cholesky (norma 2)
-    residuo_cholesky = norm(A*x_cholesky - b); 
+    residuo_cholesky = norma(A*x_cholesky - b,2); 
 
     % Stampa dei risultati del metodo di Cholesky
     fprintf('Soluzione Cholesky: [%f; %f]\n', x_cholesky);
@@ -21,7 +22,7 @@ end
 D = diag(diag(A));
 L = tril(A, -1);
 U = triu(A, 1);
-M_GS = inv(D + L) * U; 
+M_GS = (D + L)^-1 * U; 
 
 % Calcolo della norma della matrice di iterazione (norma 2)
 norm_M_GS = norm(M_GS); 
@@ -33,7 +34,8 @@ raggio_spettrale_M_GS = max(abs(eig(M_GS)));
 x0_vec = [[0.33116; 0.7], [0; 0], [1; 1]];
 
 % Iterazione per ogni vettore iniziale
-for i = 1:size(x0_vec, 2)
+n = size(x0_vec, 2);
+for i = 1 : n
     x0 = x0_vec(:, i);
     [x_gauss_seidel, iter, error] = gauss_seidel(A, b, x0, 1000, 1e-6);
 
@@ -45,7 +47,7 @@ for i = 1:size(x0_vec, 2)
 end
 
 % Calcolo dell'indice di condizionamento di A
-cond_A = cond(A);
+cond_A = cond(A); % ||A|| * ||inv(A)||
 
 % Stampa dei risultati
 fprintf('Indice di condizionamento di A: %f\n', cond_A);
