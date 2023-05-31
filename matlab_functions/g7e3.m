@@ -22,7 +22,7 @@ end
 D = diag(diag(A));
 L = tril(A, -1);
 U = triu(A, 1);
-M_GS = (D + L)^-1 * U; 
+M_GS = -(L + D)^-1 * U; 
 
 % Calcolo della norma della matrice di iterazione (norma 2)
 norm_M_GS = norm(M_GS); 
