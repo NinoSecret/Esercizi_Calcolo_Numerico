@@ -17,7 +17,7 @@ fprintf('Iterazioni: %d\n', iter_gs);
 
 % Grafico dell'errore
 figure;
-semilogy(1:iter_jacobi, error_jacobi, 'b-', 1:iter_gs, error_gs, 'r-');
+plot(1:iter_jacobi, error_jacobi, 'b-', 1:iter_gs, error_gs, 'r-');
 legend('Jacobi', 'Gauss-Seidel');
 xlabel('Iterazioni');
 ylabel('Errore');
