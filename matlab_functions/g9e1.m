@@ -1,11 +1,4 @@
-function [] = g9e1(grado_max)
-
-% Creazione di una griglia con 256 punti tra 0 e 2*pi
-x = linspace(0, 2*pi, 256)';
-
-% Definizione del segnale s(x) e della funzione rumore r(x)
-s = ((x-1.2).*sin(3.*x)+1./(x+1).*sin(1+x.^2)).*sin(x/2);
-r = 0.1*sin(7*x)+2*sin(23*x).*cos(31*x).*sin(1-19*x);
+function [] = g9e1(grado_max, s, r, x)
 
 % Costruzione del segnale disturbato dal rumore f(x)
 f = s + r;
@@ -44,24 +37,39 @@ f_appr_best = f_appr{grado_min};
 figure(1);
 hold on;
 legend_info = cell(grado_max,1);
+plot_list=zeros(1, grado_max);
+
 for i = gradi
-    plot(x, f_appr{i} );
-    legend_info{i} =  "Grado " + num2str(i) ;
+    if i == indice_min
+        plot(x, f_appr_best, 'LineWidth', 2);
+        legend_info{i} = "Grado" + grado_min +"(best)";
+    else
+        plot_list(i)=plot(x, f_appr{i});
+        legend_info{i} =  "Grado " + num2str(i) ;
+    end
 end
-plot(x, f, 'r.', x, f_appr_best, 'b-');
+
+plot(x, f, 'r.');
+
 hold off;
 legend(legend_info);
-title('Segnale approssimato,  f(x)');
+title('Polinomi, valori di f(x)');
 
 % Grafico 2: Segnale approssimato vs s(x)
-figure(2);
-plot(x, s, 'r.', x, f_appr_best, 'b-');
-title('Segnale approssimato, S(x)');
+
+for i = gradi
+    figure(i+1);
+    %disp(i);
+    plot(x, s, 'r.', x, f_appr{i}, 'b-');
+    %title('Polinomio grado ', num2str(i), 'segnale s(x)');
+    legend('Segnale s(x)','migliore approssimazione')
+end
 
 % Grafico 3: Errore tra il segnale approssimato e s(x)
-figure(3);
+figure(grado_max+1);
 plot(x, abs(s - f_appr_best), 'r-');
-title('Errore e S(x)');
+title('Errore rispetto al segnale s(x)');
+legend('Errore')
 
 % Tabella degli errori
 T = table(gradi', errori, 'VariableNames', {'Grado del Polinomio', 'Norma Errore'});
