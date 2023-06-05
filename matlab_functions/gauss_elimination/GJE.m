@@ -1,4 +1,4 @@
-function [x] = gaussJordan(A, b)
+function [x] = GJE(A, b)
 % Gauss-Jordan Elimination
 % Risolve il sistema Ax = b, dove A è una nxn matrice e b è un vettore nx1
 % Ritorna la soluzione x in un vettore nx1

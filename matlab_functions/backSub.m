@@ -1,4 +1,4 @@
-function [x] = backwardSubstitution(U, b)
+function [x] = backSub(U, b)
 % Backward Substitution
 % Solves Ux = b, where U is an upper triangular matrix and b is an n-by-1 vector
 % Returns the solution x, an n-by-1 vector
