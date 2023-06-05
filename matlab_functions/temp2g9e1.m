@@ -56,4 +56,4 @@ T = table(gradi', errori, 'VariableNames', {'Grado del Polinomio', 'Norma dell E
 disp(T);
 
 % Stampa il grado del polinomio che minimizza l'errore
-fprintf('Il grado del polinomio che minimizza l\\''errore è %d con un errore di %f\n', grado_min, min_errore);
+fprintf('Il grado del polinomio che minimizza l\''errore è %d con un errore di %f\n', grado_min, min_errore);
