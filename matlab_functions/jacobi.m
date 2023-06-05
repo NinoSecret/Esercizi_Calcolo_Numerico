@@ -20,7 +20,7 @@ function [x, iter, error] = jacobi(A, b, x0, max_iter, tol)
             x(i) = (b(i) - sum_term) / A(i, i);
         end
 
-        % Calcolo dell'errore come la norma 2 della differenza tra le soluzioni attuali e precedenti
+        % Calcolo dell'errore con la norma 2 della differenza tra le soluzioni attuali e precedenti
         error(iter) = norm(x - x_old, 2);
 
         % Se l'errore è minore della tolleranza, interrompi il ciclo
