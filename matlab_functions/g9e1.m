@@ -3,6 +3,19 @@ function [] = g9e1(grado_max, s, r, x)
 % Costruzione del segnale disturbato dal rumore f(x)
 f = s + r;
 
+figure
+hold on
+title('segnale s e rumore r')
+plot(s)
+plot(r)
+legend('segnale s', 'rumore r')
+hold off
+
+figure
+title('segnale rumoroso f')
+plot(f)
+legend('segnale rumoroso f')
+
 % Gradi dei polinomi da testare
 gradi = 1:grado_max;
 
@@ -10,6 +23,7 @@ gradi = 1:grado_max;
 errori = zeros(length(gradi), 1);
 coeff  = cell(1,grado_max);
 f_appr = cell(1,grado_max);
+
 % Loop attraverso i gradi dei polinomi
 for i = gradi
 
@@ -34,14 +48,14 @@ f_appr_best = f_appr{grado_min};
 
 % Grafico 1: Segnale approssimato vs f(x)
 
-figure(1);
+figure;
 hold on;
 legend_info = cell(grado_max,1);
 plot_list=zeros(1, grado_max);
 
 for i = gradi
     if i == indice_min
-        plot(x, f_appr_best, 'LineWidth', 2);
+        plot_list(i)=plot(x, f_appr_best, 'LineWidth', 2);
         legend_info{i} = "Grado" + grado_min +"(best)";
     else
         plot_list(i)=plot(x, f_appr{i});
@@ -55,21 +69,32 @@ hold off;
 legend(legend_info);
 title('Polinomi, valori di f(x)');
 
-% Grafico 2: Segnale approssimato vs s(x)
+% Per ciascun grado: 
+% 1) Segnale approssimato vs s(x)
+% 2) Errore vs s(x)
 
 for i = gradi
-    figure(i+1);
-    %disp(i);
+    %polinomio approssimante
+    figure;
+    hold on
     plot(x, s, 'r.', x, f_appr{i}, 'b-');
-    %title('Polinomio grado ', num2str(i), 'segnale s(x)');
-    legend('Segnale s(x)','migliore approssimazione')
+    title('Polinomio rispetto al segnale s(x)');
+    label = sprintf('Polinomio di grado %d', i);
+    legend('Segnale s(x)', label);
+    hold off
+
+    %errore
+    figure;
+    hold on
+    plot(x, s, 'r.', x, abs(s - f_appr{i}), 'g-');
+    title('Errore rispetto al segnale s(x)');
+    label = sprintf('Errore polin. grado %d', i);
+    legend('Segnale s(x)', label);
+    hold off
 end
 
 % Grafico 3: Errore tra il segnale approssimato e s(x)
-figure(grado_max+1);
-plot(x, abs(s - f_appr_best), 'r-');
-title('Errore rispetto al segnale s(x)');
-legend('Errore')
+
 
 % Tabella degli errori
 T = table(gradi', errori, 'VariableNames', {'Grado del Polinomio', 'Norma Errore'});
