@@ -29,7 +29,10 @@ for i = gradi
 
     % Approssimazione polinomiale del segnale f(x) 
     coeff{i} = polyfit(x, f, gradi(i));
-    % disp(poly2sym(coeff))
+    
+    %polinomi mostrati in modo simbolico
+    disp(poly2sym(coeff{i}))
+
     % Calcola il segnale approssimato
     f_appr{i} = polyval(coeff{i}, x);
     
@@ -56,7 +59,7 @@ plot_list=zeros(1, grado_max);
 for i = gradi
     if i == indice_min
         plot_list(i)=plot(x, f_appr_best, 'LineWidth', 2);
-        legend_info{i} = "Grado" + grado_min +"(best)";
+        legend_info{i} = "Grado " + grado_min +" (best)";
     else
         plot_list(i)=plot(x, f_appr{i});
         legend_info{i} =  "Grado " + num2str(i) ;
@@ -78,9 +81,10 @@ for i = gradi
     figure;
     hold on
     plot(x, s, 'r.', x, f_appr{i}, 'b-');
+    plot(x, f, 'g.');
     title('Polinomio rispetto al segnale s(x)');
     label = sprintf('Polinomio di grado %d', i);
-    legend('Segnale s(x)', label);
+    legend('Segnale s(x)', label, 'Segnale rum. f(x)');
     hold off
 
     %errore
@@ -99,6 +103,9 @@ end
 % Tabella degli errori
 T = table(gradi', errori, 'VariableNames', {'Grado del Polinomio', 'Norma Errore'});
 disp(T);
+figure;
+intervallo=1 : grado_max;
+plot(intervallo, errori);
 
 % Stampa il grado del polinomio che minimizza l'errore
 fprintf('Il grado del polinomio che minimizza l\''errore è %d con un errore di %f\n', grado_min, min_errore);
